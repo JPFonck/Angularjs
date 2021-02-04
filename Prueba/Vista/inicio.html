@@ -1,0 +1,73 @@
+<br>
+<div ng-controller="inicioController" ng-init="mostrar()" class="container" style="width:2500px;">
+	<h4 align="center">LISTA DE CONTRATOS</h4>
+	<br>
+	<div align="right">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-plus"></i> Consultar Contratos</button>
+	</div>
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">DATOS DE LA CONSULTA</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelar()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" ng-model="IdContrato" name="IdContrato">
+					<label>Fecha de inicio:</label>
+					<input class="form-control" type="date" id="f_inicio" ng-model="f_inicio">
+					<br>
+					<label>Fecha de Fin</label>
+					<input class="form-control" type="date" id="f_fin" ng-model="f_fin">
+					<br />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="cancelar()" data-dismiss="modal" >Cancelar</button>
+					<input type="submit" name="btnInsertar" class="btn btn-info" ng-click="insertar()" value="Consultar" data-dismiss="modal"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div>
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Contrato ID</th>
+					<th scope="col">Cliente</th>
+					<th scope="col">Contrato</th>
+					<th scope="col">Monto</th>
+					<th scope="col">Fecha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cont in contratos" >
+					<td>{{cont.IdCliente}}</td>
+					<td>{{cont.Cliente}}</td>
+					<td>{{cont.Contratos}}</td>
+					<td>{{cont.Montos}}</td>
+					<td>{{cont.Fecha}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<h5>CONSULTA</h5>
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Cliente</th>
+					<th scope="col">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cons in consulta" >
+					<td>{{cons.Cliente}}</td>
+					<td>{{cons.Total}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
